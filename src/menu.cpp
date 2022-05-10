@@ -29,10 +29,8 @@ Menu::Menu(void (*initCallback)(int)) {
 }
 
 void Menu::addItem(std::string title) {
-    // Create menu item and add to list
     menuItems.push_back(new MenuItem(title, count));
     
-    // Increment count
     count++;
 }
 

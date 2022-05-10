@@ -23,7 +23,6 @@ void option2() {
 
 int main(int argc, const char * argv[]) {
     
-    // Menu with no header or global callback
     Menu defaultMenu;
     defaultMenu.addItem("Option 0", &option0);
     defaultMenu.addItem("Option 1", &option1);
@@ -31,7 +30,6 @@ int main(int argc, const char * argv[]) {
     
     defaultMenu.printMenu();
     
-    // Menu with header and no global callback
     Menu headerMenu("Select an option");
     headerMenu.addItem("Option 0", &option0);
     headerMenu.addItem("Option 1", &option1);
@@ -39,15 +37,13 @@ int main(int argc, const char * argv[]) {
     
     headerMenu.printMenu();
     
-    // Menu with no header and with global callback
     Menu globalMenu(&globalCallback);
     globalMenu.addItem("Option 0");
-    globalMenu.addItem("Option 1", &option1); // You can have global callback and individual callbacks
+    globalMenu.addItem("Option 1", &option1);
     globalMenu.addItem("Option 2");
     
     globalMenu.printMenu();
     
-    // Menu with header and global callbacks
     Menu globalAndHeader("Selection an option:", &globalCallback);
     
     globalAndHeader.addItem("Option 0");
