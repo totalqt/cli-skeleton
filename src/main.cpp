@@ -21,6 +21,9 @@ void option2() {
     std::cout << "Item Callback | Selected option 2" << std::endl;
 }
 
+// include catch string
+// const = constant
+// 
 int main(int argc, const char * argv[]) {
     
     Menu defaultMenu;

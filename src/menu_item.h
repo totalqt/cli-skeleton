@@ -16,6 +16,7 @@ public:
     int getIndex();
     
     void performCallback();
+
 private:
     std::string title;
     
