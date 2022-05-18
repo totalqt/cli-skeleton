@@ -1,59 +1,61 @@
-//
-// Created by mike on 5/6/2022.
-//
-
 #include <iostream>
-#include "menu.h"
+#include <cstdlib>
+#include <string>
+#include "mongodb.h"
 
-void globalCallback(int option) {
-    std::cout << "Global Callback | Selection: " << option << std::endl;
-}
+using namespace std;
 
-void option0() {
-    std::cout << "Item Callback | Selected option 0" << std::endl;
-}
-
-void option1() {
-    std::cout << "Item Callback | Selected option 1" << std::endl;
-}
-
-void option2() {
-    std::cout << "Item Callback | Selected option 2" << std::endl;
-}
-
-// include catch string
-// const = constant
-// 
-int main(int argc, const char * argv[]) {
+int main() {
     
-    Menu defaultMenu;
-    defaultMenu.addItem("Option 0", &option0);
-    defaultMenu.addItem("Option 1", &option1);
-    defaultMenu.addItem("Option 2", &option2);
+    MongoDB MongoDB;
     
-    defaultMenu.printMenu();
+    string username, password;
     
-    Menu headerMenu("Select an option");
-    headerMenu.addItem("Option 0", &option0);
-    headerMenu.addItem("Option 1", &option1);
-    headerMenu.addItem("Option 2", &option2);
+    court << "Login or Register" << endl;
+    court << "Enter 1 to Login" << endl;
+    court << "Enter 2 to Register" << endl;
     
-    headerMenu.printMenu();
+    int choice;
+    cin >> choicein;
     
-    Menu globalMenu(&globalCallback);
-    globalMenu.addItem("Option 0");
-    globalMenu.addItem("Option 1", &option1);
-    globalMenu.addItem("Option 2");
-    
-    globalMenu.printMenu();
-    
-    Menu globalAndHeader("Selection an option:", &globalCallback);
-    
-    globalAndHeader.addItem("Option 0");
-    globalAndHeader.addItem("Option 1", &option1);
-    globalAndHeader.addItem("Option 2");
-    
-    globalAndHeader.printMenu();
+    if (choice == 1) {
+        //Login
+        cout << "Enter Username: ";
+        cin >> username;
+        
+        cout << "Enter Password: ";
+        cin >> password;
+        
+        bool loginSuccess = mongodb.login(username, password);
+        
+        if (loginSuccess) {
+            cout << "Login Success" << endl;
+        }
+        else {
+            cout << "Login Failed" << endl;
+        }
+        
+    }
+    else if (choice == 2) {
+        //Register
+        cout << "Enter Username: ";
+        cin >> username;
+        
+        cout << "Enter Password: ";
+        cin >> password;
+        
+        bool registerSuccess = mongodb.register(username, password);
+        
+        if (registerSuccess) {
+            cout << "Register Success" << endl;
+        }
+        else {
+            cout << "Register Failed" << endl;
+        }
+    }
+    else {
+        cout << "Invalid Choice" << endl;
+    }
     
     return 0;
 }
